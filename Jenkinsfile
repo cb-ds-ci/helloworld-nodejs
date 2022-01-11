@@ -33,14 +33,16 @@ pipeline {
           }
         }
         stage('Deploy') {
-        environment {
-          FAVORITE_COLOR = 'BLUE'
-          SERVICE_CREDS = credentials('example-service-username-password')
+          agent any
+          environment {
+            FAVORITE_COLOR = 'BLUE'
+            SERVICE_CREDS = credentials('example-service-username-password')
+          }
+          steps {
+            sh 'echo TODO - deploy to $FAVORITE_COLOR with SERVICE_CREDS: username=$SERVICE_CREDS_USR password=$SERVICE_CREDS_PSW'
+          }
         }
-        steps {
-          echo "TODO - deploy to $FAVORITE_COLOR with SERVICE_CREDS: username=$SERVICE_CREDS_USR password=$SERVICE_CREDS_PSW"
-        }
-       }
+
     
       }
     }
